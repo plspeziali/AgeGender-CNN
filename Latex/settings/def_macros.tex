@@ -1,0 +1,47 @@
+\newcommand\inputfile[1]{%
+  \InputIfFileExists{#1}{}{\typeout{No file #1.}}%
+}
+\newcommand{\todo}[1]{\noindent\textbf{\textcolor{red}{[TODO: #1]}}}
+
+
+\makeatletter
+\DeclareRobustCommand\icgonedot{\futurelet\@let@token\@icgonedot}
+\newcommand\@icgonedot{\ifx\@let@token.\else.\null\fi\xspace}
+\newcommand\eg{\textit{e.g., }}
+\newcommand\Eg{\textit{E.g., }}
+\newcommand\ie{\textit{i.e., }} 
+\newcommand\Ie{\textit{I.e., }}
+\newcommand\ia{\textit{i.a., }}
+\newcommand\Ia{\textit{I.a. ,}}
+\newcommand\cf{\textit{cf}} 
+\newcommand\Cf{\textit{C.f.}}
+\newcommand\etc{\textit{etc.}}
+\newcommand\vs{\textit{vs.}}
+\newcommand\wrt{w.r.t.}
+\newcommand\aka{a.k.a.}
+\newcommand\dof{d.o.f.}
+\newcommand\etal{et al.}
+\newcommand\OFC{\textrm{OFC}\xspace}
+
+%Added by thomas
+\newcommand{\mbf}[1]{\mathbf{#1}}
+\newcommand{\xb}{\mbf{x}}
+\newcommand{\Xb}{\mbf{X}}
+\newcommand{\yb}{\mbf{y}}
+\newcommand{\zb}{\mbf{z}}
+\newcommand{\hb}{\mbf{h}}
+\newcommand{\ub}{\mbf{u}}
+\newcommand{\Wk}[1]{\mbf{W}_k^{#1}}
+\newcommand{\xbp}{\mbf{x^\prime}}
+\newcommand{\txb}{\mbf{\tilde{x}}}
+\newcommand{\txbp}{\mbf{\tilde{x}^\prime}}
+\newcommand{\T}[1]{#1^\mathsf{T}}
+\newcommand{\RR}{I\!\!R}
+\newcommand{\Mbb}{\mathbb{M}}
+\newcommand{\Obb}{\mathbb{O}}
+\newcommand{\Zbb}{\mathbb{Z}}
+\newcommand{\Ybb}{\mathbb{Y}}
+\newcommand{\Rbb}{\mathbb{R}}
+
+
+\makeatother

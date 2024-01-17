@@ -1,0 +1,60 @@
+\documentclass[letterpaper, 10 pt, journal, twoside]{IEEEtran} 
+% Use this command for final RAL version
+%
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{breqn}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{enumitem}   
+\usepackage{xcolor}
+\usepackage{makecell}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+
+%\overrideIEEEmargins
+% Comment this command for final RAL version.
+% Use this command for initial and revised RAL versions, and for final conference version
+
+\input{settings/def_macros.tex}
+%\newcommand\eg{\textit{e.g}\icgonedot}
+\begin{document}
+
+\title{Project Title}
+
+
+\author{Author Name Author Surname}
+
+
+\maketitle
+
+\input{sections/abstract.tex}
+\IEEEpeerreviewmaketitle
+\input{sections/introduction.tex}
+\input{sections/related_work.tex}
+\input{sections/approach.tex}
+\input{sections/experiments.tex}
+\input{sections/conclusions.tex}
+
+
+%\begin{acknowledgements}
+%If you'd like to thank anyone, place your comments here
+%and remove the percent signs.
+%\end{acknowledgements}
+
+% BibTeX users please use one of
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+%\bibliographystyle{spmpsci}      % mathematics and physical sciences
+\bibliographystyle{IEEEtran}       % APS-like style for physics
+\bibliography{bibliography}   % name your BibTeX data base
+
+
+\end{document}
+% end of file template.tex
+
