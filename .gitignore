@@ -1,2 +1,3 @@
-
-Documenti/Effective training of convolutional neural networks for face-based.pdf
+Documenti/**
+Notebook/.ipynb_checkpoints/**
+Notebook/dataset/**
