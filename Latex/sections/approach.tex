@@ -43,12 +43,6 @@ such as early stopping.
 Despite this subdivision, we have taken measures to maintain the
 balance in the dataset: the accompanying histogram in  illustrates that,
 concerning gender, the distribution remains similar in both datasets.
-As for age, a continuous value that poses challenges for balance
-assessment, we will employ the non-parametric Kolmogorov-Smirnov test
-to scrutinize the absence of statistically significant differences in
-the distributions of its values between the two datasets.
-This rigorous approach ensures the reliability and fairness of our
-evaluation process.
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=.5\textwidth]{images/dataset/gender2.png}}
@@ -57,8 +51,13 @@ evaluation process.
     \label{3gender2}
 \end{figure}
 
+As for age, a continuous value that poses challenges for balance
+assessment, we will employ the non-parametric Kolmogorov-Smirnov test
+to scrutinize the absence of statistically significant differences in
+the distributions of its values between the two datasets
+(its null hypothesys) \cite{app1}.
 The outcome of the aforementioned test yields a $p$-value of approximately
-$0.38$. This value is reasonably high,
+$0.38$, this value is reasonably high,
 leading us to consider it sufficient evidence to accept the null hypothesis.
 Thus, we conclude that the two distributions of age in the two
 datasets do not exhibit statistically significant differences.
