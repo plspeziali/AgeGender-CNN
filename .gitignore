@@ -1,3 +1,10 @@
 Documenti/**
 Notebook/.ipynb_checkpoints/**
 Notebook/dataset/**
+Latex/project_main.synctex.gz
+Latex/project_main.log
+Latex/project_main.fls
+Latex/project_main.fdb_latexmk
+Latex/project_main.blg
+Latex/project_main.bbl
+Latex/project_main.aux
