@@ -83,5 +83,24 @@ The overarching goal is common between them.
 
 Let's delve into the details of the first architecture.
 
-\subsubsection{Multi-task Network} \label{sec:multi}
+\subsubsection{Multi-task Architecture} \label{sec:multi}
 
+The multi-task architecture, shown in Fig.~\ref{cnn1},
+features a structure of the following type:
+$$ \text{\texttt{INPUT}} \rightarrow [\text{\texttt{CONV}} \rightarrow \text{\texttt{POOL}}] \times 4$$
+it then divides it into two branches:
+one branch is designed to solve the classification problem,
+specifically predicting gender,
+
+while the other branch is geared towards addressing
+the regression problem, which involves predicting age.
+This split allows the model to learn to focus on
+different features than it would if it were to solve
+just one of the two tasks.
+
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.5\textwidth]{images/shared_cnn.png}}
+    \caption{Graphical representation of the Multi-task architecture}
+    \label{cnn1}
+\end{figure}
