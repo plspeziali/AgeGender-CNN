@@ -2,7 +2,7 @@
  
 \subsection{Dataset and Preprocessing} \label{sec:dataset}
 
-The dataset we will be utilizing is the UTKFace dataset,
+The dataset we will be utilizing is the UTKFace dataset \cite{app1},
 which consists of $23,708$ aligned and cropped facial RGB images, 
 annotated with age, gender, and ethnicity labels.
 This dataset was created with the intention of covering
@@ -56,7 +56,7 @@ As for age, a continuous value that poses challenges for balance
 assessment, we will employ the non-parametric Kolmogorov-Smirnov test
 to scrutinize the absence of statistically significant differences in
 the distributions of its values between the two datasets
-(its null hypothesys) \cite{app1}.
+(its null hypothesys) \cite{app2}.
 The outcome of the aforementioned test yields a $p$-value of approximately
 $0.38$, this value is reasonably high,
 leading us to consider it sufficient evidence to accept the null hypothesis.
@@ -157,11 +157,13 @@ Since we have incorporated batch normalization layers,
 it has proven unnecessary to include dropout layers.
 The combined use of these techniques is generally discouraged,
 as a rule of thumb, since it tends to yield worse results than
-when only one of them is employed \cite{app2}.
+when only one of them is employed \cite{app3}.
 
 We utilize Cross Entropy Loss as the loss function for classification
 and Mean Squared Error (MSE) Loss for regression.
 These losses are summed and employed for backpropagation at each step.
+
+We have employed an Adam optimizer with a learning rate set to $0.01$.
 
 \subsubsection{Single-task Architecture} \label{sec:single}
 
@@ -175,8 +177,11 @@ two separate networks, one for each task.
 
 The loss functions used are the same as the ones employed
 in the multi-task architecture, the only difference being
-thta, instead of summing them and using the sum for backpropagation,
+that, instead of summing them and using the sum for backpropagation,
 we use them separately for each network.
+
+We have employed an Adam optimizer with a learning rate set to $0.01$
+for the classification network and $0.001$ for the regression network.\\
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=.5\textwidth]{images/single_cnn.png}}
@@ -184,15 +189,14 @@ we use them separately for each network.
     \label{cnn2}
 \end{figure}
 
-In both architectures, we have employed the Adam optimizer,
-with a learning rate set to $0.001$ and a batch size of $64$.
+In both architectures, the batch size is $64$.
 The metrics used for evaluation are accuracy, defined as the ratio
 of correctly predicted instances to the total instances, expressed as:
 
 \[
 \text{{Accuracy}} = \frac{\text{{Number of Correct Predictions}}}{\text{{Total Number of Predictions}}}
 \]
-for classification tasks, and R-squared (R2) score, defined as the proportion of the variance in the dependent variable that is predictable from the independent variable(s), expressed as:
+for classification tasks, and R-squared ($R^2$) score, defined as the proportion of the variance in the dependent variable that is predictable from the independent variable(s), expressed as:
 
 \[
 R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
