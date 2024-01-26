@@ -3,19 +3,12 @@ In this study, we have presented a comparison between two CNN
 architectures for the recognition of biometric characteristics,
 specifically age and gender, from facial images.
 
-As evident from the metrics and discernible in various graphical
-representations, the binary gender classification task achieves similar
-results in both architectures. In contrast, the age regression task
-attains superior performance when the network is trained for both tasks,
-maintaining an identical CNN structure. The observed improvement suggests
-that joint training for multiple tasks, in this case, age regression and
-gender classification, positively influences the model's ability to predict
-age compared to the scenario where only a single task is addressed.
+As we can observe, both through metrics and graphical representations,
+maintaining the same basic structure in both the single-task and multi-task
+architectures yields remarkably similar results.
+The distinction between the two models is largely attributed to the
+inherent randomness introduced during the model training process.
 
-Certainly, while the current observations highlight the advantageous
-impact of joint training on age regression performance compared
-to a single-task approach, it's essential to acknowledge that these
-conclusions may be subject to variation under different conditions
-and with the implementation of alternative techniques.
-The effectiveness of multi-task learning can be influenced by various
-factors such as dataset characteristics and model architecture.
+Nevertheless, it's important to note that the findings of this study
+are not universally applicable and may vary when altering the
+structure of the architectures, hyperparameters, or dataset.

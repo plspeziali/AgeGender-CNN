@@ -19,7 +19,7 @@ as indicated in the following table:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Time (sec)               & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} &  840.61           & 747.39               \\
+    \textit{Single-task CNN} &  1223.41          & 747.39               \\
     \textit{Multi-task CNN}  &  640.34           & *                    \\ \bottomrule
     \end{tabular}
 \end{table}
@@ -30,7 +30,7 @@ Additionally, the epoch count for each training network is presented below:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Num. of epochs           & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} & 8                 & 10                   \\
+    \textit{Single-task CNN} & 17                & 10                   \\
     \textit{Multi-task CNN}  & 9                 & *                    \\ \bottomrule
     \end{tabular}
 \end{table}
@@ -48,7 +48,7 @@ on the training set reached:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Last loss value (training) & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} &  0.5999           & 0.0027               \\
+    \textit{Single-task CNN} &  0.7951           & 0.0027               \\
     \textit{Multi-task CNN}  &  1.2228           & *                    \\ \bottomrule
     \end{tabular}
 \end{table}
@@ -58,7 +58,7 @@ and on the validation set:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Last loss value (validation) & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} &  1.3413           & 0.0041               \\
+    \textit{Single-task CNN} &  1.3360           & 0.0041               \\
     \textit{Multi-task CNN}  &  1.4058           & *                    \\ \bottomrule
     \end{tabular}
 \end{table}
@@ -112,8 +112,8 @@ The training process ended with the following metrics on the training set:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Training Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
-    \textit{Single-task CNN} &                   &                      \\
-    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \textit{Single-task CNN} & 0.8664            & 0.9278               \\
+    \textit{Multi-task CNN}  & 0.7955            & 0.9112               \\ \bottomrule
     \end{tabular}
 \end{table}
 and the following on the validation set:
@@ -122,10 +122,14 @@ and the following on the validation set:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Validation Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
-    \textit{Single-task CNN} &                   &                      \\
-    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \textit{Single-task CNN} & 0.7693            & 0.8978               \\
+    \textit{Multi-task CNN}  & 0.7546            & 0.9020               \\ \bottomrule
     \end{tabular}
 \end{table}
+We can observe how similar results are achieved with both the training
+and validation set. It is important to note that the true measure
+of the performance of the models will be revealed in the testing set
+and we will then analize if an architecture has an advantage over the other.
 
 \subsection{Training Result}
 
@@ -140,8 +144,8 @@ architectures:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Test Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
-    \textit{Single-task CNN} &                   &                      \\
-    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \textit{Single-task CNN} & 0.7832            & 0.8965               \\
+    \textit{Multi-task CNN}  & 0.7731            & 0.8986               \\ \bottomrule
     \end{tabular}
 \end{table}
 along with Fig.~\ref{6mat} and Fig.~\ref{7mat} illustrating the
@@ -191,17 +195,17 @@ as compared to the two individual single-task scenarios.
     \label{1heat}
 \end{figure}
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.45\textwidth]{images/heatmaps/h_age.png}}
+    \centerline{\includegraphics[width=.38\textwidth]{images/heatmaps/h_age.png}}
     \caption{Attention heatmap for the Age single-task CNN}
     \label{2heat}
 \end{figure}
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.45\textwidth]{images/heatmaps/h_gender.png}}
+    \centerline{\includegraphics[width=.38\textwidth]{images/heatmaps/h_gender.png}}
     \caption{Attention heatmap for the Gender single-task CNN}
     \label{3heat}
 \end{figure}
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.45\textwidth]{images/heatmaps/h_multi.png}}
+    \centerline{\includegraphics[width=.38\textwidth]{images/heatmaps/h_multi.png}}
     \caption{Attention heatmap for the multi-task CNN}
     \label{4heat}
 \end{figure}
