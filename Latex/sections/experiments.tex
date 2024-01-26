@@ -19,35 +19,24 @@ as indicated in the following table:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Time (sec)               & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} &                   &                      \\
-    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \textit{Single-task CNN} &  840.61           & 747.39               \\
+    \textit{Multi-task CNN}  &  640.34           & *                    \\ \bottomrule
     \end{tabular}
 \end{table}
 
-Additionally, the epoch count for each training instance was
-determined based on the values presented in another table:
+Additionally, the epoch count for each training network is presented below:
 \begin{table}[H]
     \centering
     \begin{tabular}{@{}lll@{}}
     \toprule
     Num. of epochs           & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} &                   &                      \\
-    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \textit{Single-task CNN} & 8                 & 10                   \\
+    \textit{Multi-task CNN}  & 9                 & *                    \\ \bottomrule
     \end{tabular}
 \end{table}
 
 In each training iteration, an early stopping mechanism was implemented with
-a patience value set as detailed in the following table:
-\begin{table}[H]
-    \centering
-    \begin{tabular}{@{}lll@{}}
-    \toprule
-    Patience value           & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} &                   &                      \\
-    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
-    \end{tabular}
-\end{table}
-
+a patience value set to 3 for both architectures.
 The patience hyper-parameter was determined by monitoring the validation loss
 of the model and stopping the training process when the loss
 did not improve for a number of epochs equal to the patience value.
@@ -59,8 +48,8 @@ on the training set reached:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Last loss value (training) & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} &                   &                      \\
-    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \textit{Single-task CNN} &  0.5999           & 0.0027               \\
+    \textit{Multi-task CNN}  &  1.2228           & *                    \\ \bottomrule
     \end{tabular}
 \end{table}
 and on the validation set:
@@ -69,10 +58,16 @@ and on the validation set:
     \begin{tabular}{@{}lll@{}}
     \toprule
     Last loss value (validation) & \textbf{Age task} & \textbf{Gender task} \\ \midrule
-    \textit{Single-task CNN} &                   &                      \\
-    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \textit{Single-task CNN} &  1.3413           & 0.0041               \\
+    \textit{Multi-task CNN}  &  1.4058           & *                    \\ \bottomrule
     \end{tabular}
 \end{table}
+During the backpropagation, the loss value for the age task, 
+was normalized by multiplying it by a factor
+$\lambda_{\text{age}} = 0.01$.
+By scaling down the loss for the age task, it effectively equalized
+the magnitudes of both losses, ensuring a more balanced and comparable
+training signal during the optimization process. 
 
 In Fig.~\ref{1loss}, Fig.~\ref{2loss} and Fig.~\ref{3loss},
 we can observe the trends through the iterations
@@ -85,31 +80,52 @@ in the single task
 and the multi-task scenario, respectively.
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.5\textwidth]{images/training/loss-single-age.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/training/loss-single-age.png}}
     \caption{Loss trend in the single task for age}
     \label{1loss}
 \end{figure}
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.5\textwidth]{images/training/loss-single-gender.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/training/loss-single-gender.png}}
     \caption{Loss trend in the single task for gender}
     \label{2loss}
 \end{figure}
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.5\textwidth]{images/training/loss-multi.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/training/loss-multi.png}}
     \caption{Loss trend in the multi task}
     \label{3loss}
 \end{figure}
 
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.5\textwidth]{images/training/acc-single.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/training/acc-single.png}}
     \caption{Accuracy trend in the single task CNNs}
     \label{4acc}
 \end{figure}
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.5\textwidth]{images/training/acc-multi.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/training/acc-multi.png}}
     \caption{Accuracy trend in the multi task CNN}
     \label{5acc}
 \end{figure}
+
+The training process ended with the following metrics on the training set:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}lll@{}}
+    \toprule
+    Training Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
+    \textit{Single-task CNN} &                   &                      \\
+    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \end{tabular}
+\end{table}
+and the following on the validation set:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{@{}lll@{}}
+    \toprule
+    Validation Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
+    \textit{Single-task CNN} &                   &                      \\
+    \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
+    \end{tabular}
+\end{table}
 
 \subsection{Training Result}
 
@@ -123,7 +139,7 @@ architectures:
     \centering
     \begin{tabular}{@{}lll@{}}
     \toprule
-    Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
+    Test Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
     \textit{Single-task CNN} &                   &                      \\
     \textit{Multi-task CNN}  &                   &                      \\ \bottomrule
     \end{tabular}
@@ -147,12 +163,45 @@ a graph depicting the predicted age versus the ground truth
 for both the single-task and multi-task scenarios for the first
 50 observations of the set.
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.5\textwidth]{images/testing/reg_single.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/testing/reg_single.png}}
     \caption{Regressor performance example for the single task}
     \label{8reg}
 \end{figure}
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.5\textwidth]{images/testing/reg_multi.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/testing/reg_multi.png}}
     \caption{Regressor performance example for the multi task}
     \label{9reg}
+\end{figure}
+
+In the context of the provided example image in Fig.~\ref{1heat},
+we can observe the corresponding mean attention heatmaps
+for each convolutional layer in the neural network.
+Specifically, Fig.~\ref{2heat} illustrates the single-task attention
+heatmap for age, while Fig.~\ref{3heat} depicts the single-task
+attention heatmap for gender and
+Fig.~\ref{4heat} showcases the multi-task attention heatmap.
+Notably, we can observe that the attention maps in the multi-task
+scenario appear to be a weighted average,
+with a notable bias towards the age-related features,
+as compared to the two individual single-task scenarios.
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.25\textwidth]{images/heatmaps/sample.png}}
+    \caption{Sample image from the validation dataset}
+    \label{1heat}
+\end{figure}
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.45\textwidth]{images/heatmaps/h_age.png}}
+    \caption{Attention heatmap for the Age single-task CNN}
+    \label{2heat}
+\end{figure}
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.45\textwidth]{images/heatmaps/h_gender.png}}
+    \caption{Attention heatmap for the Gender single-task CNN}
+    \label{3heat}
+\end{figure}
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.45\textwidth]{images/heatmaps/h_multi.png}}
+    \caption{Attention heatmap for the multi-task CNN}
+    \label{4heat}
 \end{figure}

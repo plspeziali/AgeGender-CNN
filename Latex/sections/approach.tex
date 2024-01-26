@@ -128,6 +128,7 @@ Let's explore in more detail the structure of the various layers:
     Batch normalization helps stabilize and accelerate
     the training of neural networks by normalizing the batch to its
     mean and standard deviation instead of doing it with the whole dataset.
+    This is the only occurrence of batch normalization in the network.
     \item The output of the batch normalization then enters
     the Rectified Linear Unit (RELU) activation function,
     it introduces non-linearity to the model,
@@ -138,12 +139,13 @@ Let's explore in more detail the structure of the various layers:
     As a result, the size of the produced map is halved.
     \item The previous steps are repeated three more times,
     with the only difference being the number of filters in the
-    second convolutional layer (5 instead of 3) and the number of filters,
-    which is doubled in each subsequent convolutional layer.
+    second convolutional layer (5 instead of 3), the number of filters,
+    which is doubled in each subsequent convolutional layer,
+    and the absence of batch normalization layers.
     \item The output of the last pooling layer is flattened
     and fed into two spearated branches of fully connected layers,
     each with $128$ neurons,
-    followed by batch normalization and ReLU activation.
+    followed by a dropout layer (set at $0.25$) and ReLU activation.
     \item The output of the last fully connected layer of the first branch
     is fed into a fully connected layer with two neurons,
     one for each class of the classification problem
@@ -153,11 +155,13 @@ Let's explore in more detail the structure of the various layers:
     for the regression problem (age), followed by a linear activation.
 \end{itemize}
 
-Since we have incorporated batch normalization layers,
-it has proven unnecessary to include dropout layers.
+Since we have incorporated a batch normalization layer,
+it has proven unnecessary to include dropout layers in the convolutional part
+of the network.
 The combined use of these techniques is generally discouraged,
 as a rule of thumb, since it tends to yield worse results than
 when only one of them is employed \cite{app3}.
+However, we have included a dropout layer in the fully connected part.
 
 We utilize Cross Entropy Loss as the loss function for classification
 and Mean Squared Error (MSE) Loss for regression.
