@@ -1,7 +1,7 @@
 \begin{abstract}
 This study conducts a comparative analysis between a multi-task
 Convolutional Neural Network (CNN) and two single-task CNNs for
-age and perceived gender detection in facial images, aiming to evaluate their
+age prediction and perceived gender detection in facial images, aiming to evaluate their
 performance and differences in task execution.
 The two single-task CNNs were designed with identical structures,
 differing only in the final part: one for age prediction and another
@@ -9,8 +9,10 @@ for gender classification. The multi-task CNN incorporated a branching
 mechanism for both tasks, utilizing a shared loss function for backpropagation.
 Evaluation metrics included R-squared score for age prediction,
 accuracy for gender
-classification, and visualization of mean heatmaps to discern disparities in
-the attention of convolutional layers. Results indicate that there are no
+classification and visualization of mean attention heatmaps to
+discern disparities in which features 
+the various convolutional layers focus on.
+Results indicate that there are no
 significant differences in performance between the multi-task CNN and the
 single-task CNNs, suggesting comparable efficacy in gender and age prediction
 tasks.

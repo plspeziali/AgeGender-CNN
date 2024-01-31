@@ -11,7 +11,7 @@ illumination, occlusion, resolution, and more.
 In our analysis, we will specifically concentrate
 on the first two attributes within the dataset: age and gender. 
 
-In our analysis, we will exclusively consider $70\%$
+We will exclusively consider $70\%$
 of the dataset for our training set, with the remaining
 $30\%$ designated for testing purposes.
 This division allows us to train our models on a substantial
@@ -90,7 +90,7 @@ predictions on unseen data.
 As previously mentioned, in this project, we will compare two
 CNN architectures, one comprising a single multi-task
 network and another consisting of two single-task networks.
-The overarching goal is common between them.
+The final goal is common between them.
 
 Let's delve into the details of the both architectures.
 
@@ -131,7 +131,7 @@ Let's explore in more detail the structure of the various layers:
     mean and standard deviation instead of doing it with the whole dataset.
     This is the only occurrence of batch normalization in the network.
     \item The output of the batch normalization then enters
-    the Rectified Linear Unit (RELU) activation function,
+    the Rectified Linear Unit (ReLU) activation function,
     it introduces non-linearity to the model,
     allowing it to learn from more complex patterns in the data.
     \item Before entering another convolutional layer,
@@ -150,10 +150,10 @@ Let's explore in more detail the structure of the various layers:
     \item The output of the last fully connected layer of the first branch
     is fed into a fully connected layer with two neurons,
     one for each class of the classification problem
-    (\texttt{Male} or \texttt{Female}), followed by a softmax activation.
+    (\texttt{Male}$: 0$ or \texttt{Female}$: 1$), followed by a softmax.
     \item The output of the last fully connected layer of the second branch
     is fed into a fully connected layer with one neuron
-    for the regression problem (age), followed by a linear activation.
+    for the regression problem (age), followed by a linear.
 \end{itemize}
 
 Since we have incorporated a batch normalization layer,

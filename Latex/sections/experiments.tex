@@ -67,7 +67,7 @@ was normalized by multiplying it by a factor
 $\lambda_{\text{age}} = 0.01$.
 By scaling down the loss for the age task, it effectively equalized
 the magnitudes of both losses, ensuring a more balanced and comparable
-training signal during the optimization process. 
+optimization process. 
 
 In Fig.~\ref{1loss}, Fig.~\ref{2loss} and Fig.~\ref{3loss},
 we can observe the trends through the epochs
@@ -129,7 +129,42 @@ and the following on the validation set:
 We can observe how similar results are achieved with both the training
 and validation set. It is important to note that the true measure
 of the performance of the models will be revealed in the testing set
-and we will then analize if an architecture has an advantage over the other.
+and we will only then analyze if an architecture has an advantage
+over the other.
+
+In the context of the provided sample image in Fig.~\ref{1heat},
+taken from the validation set,
+we can observe the corresponding mean attention heatmaps
+for each convolutional layer in the neural network.
+Specifically, Fig.~\ref{2heat} illustrates the single-task attention
+heatmap for age, while Fig.~\ref{3heat} depicts the single-task
+attention heatmap for gender and
+Fig.~\ref{4heat} showcases the multi-task attention heatmap.
+We can observe that the attention maps in the multi-task
+scenario appear to be a weighted average,
+with a notable bias towards the age-related features,
+as compared to the two individual single-task scenarios.
+
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.19\textwidth]{images/heatmaps/sample.png}}
+    \caption{Sample image from the validation dataset}
+    \label{1heat}
+\end{figure}
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.36\textwidth]{images/heatmaps/h_age.png}}
+    \caption{Attention heatmap for the Age single-task CNN}
+    \label{2heat}
+\end{figure}
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.36\textwidth]{images/heatmaps/h_gender.png}}
+    \caption{Attention heatmap for the Gender single-task CNN}
+    \label{3heat}
+\end{figure}
+\begin{figure}[htbp]
+    \centerline{\includegraphics[width=.36\textwidth]{images/heatmaps/h_multi.png}}
+    \caption{Attention heatmap for the multi-task CNN}
+    \label{4heat}
+\end{figure}
 
 \subsection{Training Result}
 
@@ -152,12 +187,12 @@ along with Fig.~\ref{6mat} and Fig.~\ref{7mat} illustrating the
 confusion matrices for single-task
 and multi-task classification, respectively.
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.4\textwidth]{images/testing/mat_single.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/testing/mat_single.png}}
     \caption{Confusion Matrix for the single task}
     \label{6mat}
 \end{figure}
 \begin{figure}[htbp]
-    \centerline{\includegraphics[width=.4\textwidth]{images/testing/mat_multi.png}}
+    \centerline{\includegraphics[width=.45\textwidth]{images/testing/mat_multi.png}}
     \caption{Confusion Matrix for the multi task}
     \label{7mat}
 \end{figure}
@@ -175,37 +210,4 @@ for both the single-task and multi-task scenarios for the first
     \centerline{\includegraphics[width=.45\textwidth]{images/testing/reg_multi.png}}
     \caption{Regressor performance example for the multi task}
     \label{9reg}
-\end{figure}
-
-In the context of the provided sample image in Fig.~\ref{1heat},
-we can observe the corresponding mean attention heatmaps
-for each convolutional layer in the neural network.
-Specifically, Fig.~\ref{2heat} illustrates the single-task attention
-heatmap for age, while Fig.~\ref{3heat} depicts the single-task
-attention heatmap for gender and
-Fig.~\ref{4heat} showcases the multi-task attention heatmap.
-We can observe that the attention maps in the multi-task
-scenario appear to be a weighted average,
-with a notable bias towards the age-related features,
-as compared to the two individual single-task scenarios.
-
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=.25\textwidth]{images/heatmaps/sample.png}}
-    \caption{Sample image from the validation dataset}
-    \label{1heat}
-\end{figure}
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=.38\textwidth]{images/heatmaps/h_age.png}}
-    \caption{Attention heatmap for the Age single-task CNN}
-    \label{2heat}
-\end{figure}
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=.38\textwidth]{images/heatmaps/h_gender.png}}
-    \caption{Attention heatmap for the Gender single-task CNN}
-    \label{3heat}
-\end{figure}
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=.38\textwidth]{images/heatmaps/h_multi.png}}
-    \caption{Attention heatmap for the multi-task CNN}
-    \label{4heat}
 \end{figure}
