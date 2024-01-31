@@ -98,9 +98,10 @@ Let's delve into the details of the both architectures.
 
 The multi-task architecture, shown in Fig.~\ref{cnn1},
 features a structure of the following type:
-$$ \text{\texttt{INPUT}} \rightarrow [\text{\texttt{CONV}} \rightarrow \text{\texttt{BATCHNORM}} \rightarrow \text{\texttt{RELU}} \rightarrow \text{\texttt{POOL}}] \times 4$$
+$$ \text{\texttt{INPUT}} \rightarrow [\text{\texttt{CONV}} \rightarrow \text{\texttt{BATCHNORM}} \rightarrow \text{\texttt{RELU}} \rightarrow \text{\texttt{MAXPOOL}}] \rightarrow $$
+$$\rightarrow [\text{\texttt{CONV}} \rightarrow \text{\texttt{RELU}} \rightarrow \text{\texttt{MAXPOOL}}]\times 3$$
 it then divides it into two branches, each retaining the same structure:
-$$ \text{\texttt{FC}} \rightarrow \text{\texttt{BATCHNORM}} \rightarrow \text{\texttt{RELU}} \rightarrow \text{\texttt{FC}}$$
+$$ \text{\texttt{FC}} \rightarrow \text{\texttt{DROPOUT}} \rightarrow \text{\texttt{RELU}} \rightarrow \text{\texttt{FC}}$$
 The key distinction lies in the purpose of each branch:
 one branch is designed to address the classification problem,
 specifically predicting gender,
@@ -119,10 +120,10 @@ Let's explore in more detail the structure of the various layers:
     \item The input, with dimensions $128\times128\times3$, enters
     the first $2$D convolutional layer comprising $64$ filters of size $3\times3$.
     These filters apply a padding of $2$ to preserve spatial dimensions
-    after convolution. The stride is set to $1$, consistent with every
-    other convolutional layer, and set to $2$ in the subsequent 
+    after convolution. The stride is set to $1$
+    in the convolutional layer and set to $2$ in the subsequent 
     pooling layer. This setting avoids requiring the network to learn
-    to subsample.
+    to subsample and it's repeated in all the subsequent layers.
     \item Following this, a batch normalization layer is applied
     to the output of the previous convolutional layer.
     Batch normalization helps stabilize and accelerate
@@ -184,8 +185,8 @@ in the multi-task architecture, the only difference being
 that, instead of summing them and using the sum for backpropagation,
 we use them separately for each network.
 
-We have employed an Adam optimizer with a learning rate set to $0.01$
-for the classification network and $0.001$ for the regression network.\\
+We have employed an Adam optimizer with a learning rate set to $0.001$
+for both the classification and the regression network.\\
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=.5\textwidth]{images/single_cnn.png}}
