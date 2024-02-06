@@ -139,8 +139,7 @@ Let's explore in more detail the structure of the various layers:
     a max pooling layer with a window size of $2\times2$ and a stride of 2.
     As a result, the size of the produced map is halved.
     \item The previous steps are repeated three more times,
-    with the only difference being the number of filters in the
-    second convolutional layer (5 instead of 3), the number of filters,
+    with the only differences being the number of filters,
     which is doubled in each subsequent convolutional layer,
     and the absence of batch normalization layers.
     \item The output of the last pooling layer is flattened
