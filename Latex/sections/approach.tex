@@ -119,8 +119,9 @@ Let's explore in more detail the structure of the various layers:
 \begin{itemize}
     \item The input, with dimensions $128\times128\times3$, enters
     the first $2$D convolutional layer comprising $64$ filters of size $3\times3$.
-    These filters apply a padding of $2$ to preserve spatial dimensions
-    after convolution. The stride is set to $1$
+    This layer applies a padding of $2$ to visit every pixel
+    of the input the same number of times
+    during convolution. The stride is set to $1$
     in the convolutional layer and set to $2$ in the subsequent 
     pooling layer. This setting avoids requiring the network to learn
     to subsample and it's repeated in all the subsequent layers.
@@ -141,7 +142,8 @@ Let's explore in more detail the structure of the various layers:
     \item The previous steps are repeated three more times,
     with the only differences being the number of filters,
     which is doubled in each subsequent convolutional layer,
-    and the absence of batch normalization layers.
+    the absence of batch normalization layers and the padding,
+    which is set to $1$ in the every convolutional layer.
     \item The output of the last pooling layer is flattened
     and fed into two spearated branches of fully connected layers,
     each with $128$ neurons,
