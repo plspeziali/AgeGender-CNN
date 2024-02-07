@@ -16,22 +16,22 @@ The model training process utilized a total of seconds,
 as indicated in the following table:
 \begin{table}[H]
     \centering
-    \begin{tabular}{@{}lll@{}}
+    \begin{tabular}{@{}l|cc@{}}
     \toprule
     Time (sec)               & \textbf{Age task} & \textbf{Gender task} \\ \midrule
     \textit{Single-task CNN} &  1223.41          & 747.39               \\
-    \textit{Multi-task CNN}  &  640.34           & *                    \\ \bottomrule
+    \textit{Multi-task CNN}  &  \multicolumn{2}{c}{640.34}      \\ \bottomrule
     \end{tabular}
 \end{table}
 
 Additionally, the epoch count for each training network is presented below:
 \begin{table}[H]
     \centering
-    \begin{tabular}{@{}lll@{}}
+    \begin{tabular}{@{}l|cc@{}}
     \toprule
     Num. of epochs           & \textbf{Age task} & \textbf{Gender task} \\ \midrule
     \textit{Single-task CNN} & 17                & 10                   \\
-    \textit{Multi-task CNN}  & 9                 & *                    \\ \bottomrule
+    \textit{Multi-task CNN}  & \multicolumn{2}{c}{9}                \\ \bottomrule
     \end{tabular}
 \end{table}
 
@@ -45,21 +45,21 @@ The training process was halted when the loss values
 on the training set reached: 
 \begin{table}[H]
     \centering
-    \begin{tabular}{@{}lll@{}}
+    \begin{tabular}{@{}l|cc@{}}
     \toprule
     Last loss value (training) & \textbf{Age task} & \textbf{Gender task} \\ \midrule
     \textit{Single-task CNN} &  0.7951           & 0.0027               \\
-    \textit{Multi-task CNN}  &  1.2228           & *                    \\ \bottomrule
+    \textit{Multi-task CNN}  &  \multicolumn{2}{c}{1.2228}              \\ \bottomrule
     \end{tabular}
 \end{table}
 and on the validation set:
 \begin{table}[H]
     \centering
-    \begin{tabular}{@{}lll@{}}
+    \begin{tabular}{@{}l|cc@{}}
     \toprule
     Last loss value (validation) & \textbf{Age task} & \textbf{Gender task} \\ \midrule
     \textit{Single-task CNN} &  1.3360           & 0.0041               \\
-    \textit{Multi-task CNN}  &  1.4058           & *                    \\ \bottomrule
+    \textit{Multi-task CNN}  &  \multicolumn{2}{c}{1.4058}               \\ \bottomrule
     \end{tabular}
 \end{table}
 During the backpropagation, the loss value for the age task, 
@@ -109,7 +109,7 @@ and the multi-task scenario, respectively.
 The training process ended with the following metrics on the training set:
 \begin{table}[H]
     \centering
-    \begin{tabular}{@{}lll@{}}
+    \begin{tabular}{@{}l|cc@{}}
     \toprule
     Training Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
     \textit{Single-task CNN} & 0.8664            & 0.9278               \\
@@ -119,7 +119,7 @@ The training process ended with the following metrics on the training set:
 and the following on the validation set:
 \begin{table}[H]
     \centering
-    \begin{tabular}{@{}lll@{}}
+    \begin{tabular}{@{}l|cc@{}}
     \toprule
     Validation Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
     \textit{Single-task CNN} & 0.7693            & 0.8978               \\
@@ -176,7 +176,7 @@ Below, you can find the table of accuracy and $R^2$ results for both
 architectures:
 \begin{table}[H]
     \centering
-    \begin{tabular}{@{}lll@{}}
+    \begin{tabular}{@{}l|cc@{}}
     \toprule
     Test Metrics & \textbf{Age task ($\mathbf{R^2}$)} & \textbf{Gender task (Accuracy)} \\ \midrule
     \textit{Single-task CNN} & 0.7832            & 0.8965               \\
