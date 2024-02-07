@@ -35,11 +35,13 @@ Additionally, the epoch count for each training network is presented below:
     \end{tabular}
 \end{table}
 
-In each training iteration, an early stopping mechanism was implemented with
+An early stopping mechanism was implemented with
 a patience value set to 3 for both architectures.
 The patience hyper-parameter was determined by monitoring the validation loss
-of the model and stopping the training process when the loss
-did not improve for a number of epochs equal to the patience value.
+of the model during various trainings and halting the
+process if the loss did not improve
+for a certain number of epochs. Then, said number, was used 
+as a fixed value to automate the process.
 
 The training process was halted when the loss values
 on the training set reached: 
@@ -143,7 +145,7 @@ Fig.~\ref{4heat} showcases the multi-task attention heatmap.
 We can observe that the attention maps in the multi-task
 scenario appear to be a weighted average,
 with a notable bias towards the age-related features,
-as compared to the two individual single-task scenarios.
+of the two individual single-task scenarios.
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=.19\textwidth]{images/heatmaps/sample.png}}
