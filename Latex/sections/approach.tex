@@ -92,6 +92,20 @@ CNN architectures, one comprising a single multi-task
 network and another consisting of two single-task networks.
 The final goal is common between them.
 
+In both architectures, the batch size is $64$.
+The metrics used for evaluation are accuracy, defined as the ratio
+of correctly predicted instances to the total instances, expressed as:
+
+\[
+\text{{Accuracy}} = \frac{\text{{Number of Correct Predictions}}}{\text{{Total Number of Predictions}}}
+\]
+for classification tasks, and R-squared ($R^2$) score, defined as the proportion of the variance in the dependent variable that is predictable from the independent variable(s), expressed as:
+
+\[
+R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+\]
+for regression tasks.
+
 Let's delve into the details of the both architectures.
 
 \subsubsection{Multi-task Architecture} \label{sec:multi}
@@ -151,10 +165,10 @@ Let's explore in more detail the structure of the various layers:
     \item The output of the last fully connected layer of the first branch
     is fed into a fully connected layer with two neurons,
     one for each class of the classification problem
-    (\texttt{Male}$: 0$ or \texttt{Female}$: 1$), followed by a softmax.
+    (\texttt{Male}$: 0$ or \texttt{Female}$: 1$), followed by a softmax function.
     \item The output of the last fully connected layer of the second branch
     is fed into a fully connected layer with one neuron
-    for the regression problem (age), followed by a linear.
+    for the regression problem (age), followed by a linear function.
 \end{itemize}
 
 Since we have incorporated a batch normalization layer,
@@ -187,24 +201,10 @@ that, instead of summing them and using the sum for backpropagation,
 we use them separately for each network.
 
 We have employed an Adam optimizer with a learning rate set to $0.001$
-for both the classification and the regression network.\\
+for both the classification and the regression network.
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=.5\textwidth]{images/single_cnn.png}}
     \caption{Graphical representation of the Single-task architecture}
     \label{cnn2}
 \end{figure}
-
-In both architectures, the batch size is $64$.
-The metrics used for evaluation are accuracy, defined as the ratio
-of correctly predicted instances to the total instances, expressed as:
-
-\[
-\text{{Accuracy}} = \frac{\text{{Number of Correct Predictions}}}{\text{{Total Number of Predictions}}}
-\]
-for classification tasks, and R-squared ($R^2$) score, defined as the proportion of the variance in the dependent variable that is predictable from the independent variable(s), expressed as:
-
-\[
-R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
-\]
-for regression tasks.
